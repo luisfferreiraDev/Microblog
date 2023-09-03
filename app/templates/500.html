@@ -1,8 +1,11 @@
-{% extends "base.html" %} {% block content %}
+{% extends "base.html" %} 
+
+{% block content %}
+
 <div class="d-flex flex-column justify-content-center align-items-center my-4">
-    <h1>An unexpected error has occurred</h1>
-    <p>The administrator has been notified. Sorry for the inconvenience!</p>
-    <a class="btn btn-outline-primary" href="{{ url_for('index') }}"><i class="fa-solid fa-arrow-left me-2"></i>Back</a>
+    <h1>{{_('An unexpected error has occurred')}}</h1>
+    <p>{{_('The administrator has been notified. Sorry for the inconvenience!')}}</p>
+    <a class="btn btn-outline-primary" href="{{ url_for('index') }}"><i class="fa-solid fa-arrow-left me-2"></i>{{_('Back')}}</a>
 </div>
 
 {% endblock %}

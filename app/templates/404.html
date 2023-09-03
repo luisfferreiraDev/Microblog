@@ -1,7 +1,7 @@
 {% extends "base.html" %} {% block content %}
 <div class="d-flex flex-column justify-content-center align-items-center my-4">
-    <h1>File Not Found</h1>
-    <a class="btn btn-outline-primary" href="{{ url_for('index') }}"><i class="fa-solid fa-arrow-left me-2"></i>Back</a>
+    <h1>{{_('File Not Found')}}</h1>
+    <a class="btn btn-outline-primary" href="{{ url_for('index') }}"><i class="fa-solid fa-arrow-left me-2"></i>{{_('Back')}}</a>
 </div>
 
 {% endblock %}

@@ -6,23 +6,19 @@
   <div class="my-4 d-flex justify-content-center">
     <div class="card shadow" style="width: 24rem;">
       <div class="card-body">
-        <h5 class="card-title">Sign In</h5>
-        <h6 class="card-subtitle mb-2 text-body-secondary">Have an account?</h6>
+        <h5 class="card-title">{{_(Sign In)}}</h5>
+        <h6 class="card-subtitle mb-2 text-body-secondary">{{_('Have an account?')}}</h6>
         <form action="" method="post" novalidate>
           {{ render_form(form) }}
         </form>
       </div>
       <div class="card-footer text-body-secondary text-center">
-        <p>
-          Don't have an account?
-        </p>
-        <a class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="{{ url_for('register') }}">Click to Register!</a>
+        <p>{{_('New user?')}}</p>
+        <a class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="{{ url_for('register') }}">{{_('Click to Register!')}}</a>
       </div>
       <div class="card-footer text-body-secondary text-center">
-        <p>
-          Forgot Your Password?
-        </p>
-        <a class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="{{ url_for('reset_password_request') }}">Click to Reset It</a>
+        <p>{{_('Forgot Your Password?')}}</p>
+        <a class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="{{ url_for('reset_password_request') }}">{{_('Click to Reset It')}}</a>
       </div>
     </div>
   </div>

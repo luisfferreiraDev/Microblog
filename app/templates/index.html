@@ -3,7 +3,7 @@
 {% block content %}
 
 <div class="container mt-4">
-  <h1>Hi, {{ current_user.username }}!</h1>
+  <h1>{{ _('Hi, %(username)s!', username=current_user.username) }}</h1>
 
   {% if form %}
   <form action="" method="post">
@@ -15,7 +15,7 @@
           <div class="text-danger">{{ error }}</div>
           {% endfor %}
       </div>
-      <button type="submit" class="btn btn-primary mt-2"><i class="fa-regular fa-comment me-2"></i>Submit</button>
+      <button type="submit" class="btn btn-primary mt-2"><i class="fa-regular fa-comment me-2"></i>{{_('Submit')}}</button>
   </form>
   {% endif %}
 
@@ -27,10 +27,10 @@
 
   <div class="mt-4">
       {% if prev_url %}
-      <a href="{{ prev_url }}" class="btn btn-secondary">Newer posts</a>
+      <a href="{{ prev_url }}" class="btn btn-secondary">{{_('Newer posts')}}</a>
       {% endif %}
       {% if next_url %}
-      <a href="{{ next_url }}" class="btn btn-secondary float-end">Older posts</a>
+      <a href="{{ next_url }}" class="btn btn-secondary float-end">{{_('Older posts')}}</a>
       {% endif %}
   </div>
 </div>

@@ -1,13 +1,14 @@
 import logging
 from logging.handlers import SMTPHandler, RotatingFileHandler
 import os
-from flask import Flask
+from flask import Flask, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
 from flask_mail import Mail
 from flask_bootstrap import Bootstrap5
 from flask_moment import Moment
+from flask_babel import Babel
 from config import Config
 
 
@@ -25,6 +26,11 @@ mail = Mail(app)
 bootstrap = Bootstrap5(app)
 
 moment = Moment(app)
+
+def get_locale():
+    return request.accept_languages.best_match(app.config['LANGUAGES'])
+babel = Babel(app)
+babel.init_app(app, locale_selector=get_locale)
 
 if not app.debug:
     if app.config['MAIL_SERVER']:
@@ -53,6 +59,9 @@ if not app.debug:
 
     app.logger.setLevel(logging.INFO)
     app.logger.info('Microblog startup')
+
+
+
 
 from app import routes, models, errors
 
