@@ -7,6 +7,7 @@ from flask_migrate import Migrate
 from flask_login import LoginManager
 from flask_mail import Mail
 from flask_bootstrap import Bootstrap5
+from flask_moment import Moment
 from config import Config
 
 
@@ -23,6 +24,7 @@ mail = Mail(app)
 
 bootstrap = Bootstrap5(app)
 
+moment = Moment(app)
 
 if not app.debug:
     if app.config['MAIL_SERVER']:

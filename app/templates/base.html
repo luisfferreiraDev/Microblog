@@ -71,7 +71,8 @@
       {% block content %}{% endblock %}
 
       {% block scripts %}
-          {{ bootstrap.load_js() }}
+        {{ bootstrap.load_js() }}
+        {{ moment.include_moment() }}
       {% endblock %}
       <script src="https://kit.fontawesome.com/e03d8a3810.js" crossorigin="anonymous"></script>
   </body>

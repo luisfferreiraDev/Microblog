@@ -41,7 +41,7 @@
       <div class="d-flex flex-row align-items-center">
         <h1>{{ user.username }}</h1>
         {% if user.last_seen %}
-          <p class="ms-4">Last seen on: {{ user.last_seen }}</p>
+          <p class="ms-4">Last seen on: {{ moment(user.last_seen).format('LLL') }}</p>
         {% endif %}
         {% if user == current_user %}
         <div class="ms-auto">
