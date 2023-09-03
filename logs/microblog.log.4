@@ -1,20 +1,4 @@
-2023-09-03 12:51:16,901 INFO: Microblog startup [in C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\__init__.py:46]
-2023-09-03 12:54:52,804 INFO: Microblog startup [in C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\__init__.py:46]
-2023-09-03 12:56:03,583 INFO: Microblog startup [in C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\__init__.py:46]
-2023-09-03 13:04:36,517 INFO: Microblog startup [in C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\__init__.py:46]
-2023-09-03 13:04:42,639 INFO: Microblog startup [in C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\__init__.py:46]
-2023-09-03 14:57:15,078 INFO: Microblog startup [in C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\__init__.py:46]
-2023-09-03 15:08:22,345 INFO: Microblog startup [in C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\__init__.py:46]
-2023-09-03 15:14:57,232 INFO: Microblog startup [in C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\__init__.py:46]
-2023-09-03 15:15:04,059 INFO: Microblog startup [in C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\__init__.py:46]
-2023-09-03 15:16:32,403 INFO: Microblog startup [in C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\__init__.py:46]
-2023-09-03 15:18:49,524 INFO: Microblog startup [in C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\__init__.py:46]
-2023-09-03 15:21:02,855 INFO: Microblog startup [in C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\__init__.py:46]
-2023-09-03 15:25:46,418 INFO: Microblog startup [in C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\__init__.py:46]
-2023-09-03 15:26:55,004 INFO: Microblog startup [in C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\__init__.py:46]
-2023-09-03 15:40:07,416 INFO: Microblog startup [in C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\__init__.py:46]
-2023-09-03 15:42:35,349 INFO: Microblog startup [in C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\__init__.py:46]
-2023-09-03 15:42:43,536 ERROR: Exception on /user/user2 [GET] [in C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\app.py:1414]
+2023-09-03 15:53:59,090 ERROR: Exception on /index [GET] [in C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\app.py:1414]
 Traceback (most recent call last):
   File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\app.py", line 2190, in wsgi_app
     response = self.full_dispatch_request()
@@ -26,8 +10,8 @@ Traceback (most recent call last):
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
   File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask_login\utils.py", line 290, in decorated_view
     return current_app.ensure_sync(func)(*args, **kwargs)
-  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\routes.py", line 83, in user
-    return render_template('user.html', user=user, posts = posts)
+  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\routes.py", line 40, in index
+    return render_template('index.html', title='Home', posts=posts, form=form)
   File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\templating.py", line 151, in render_template
     return _render(app, template, context)
   File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\templating.py", line 132, in _render
@@ -36,16 +20,16 @@ Traceback (most recent call last):
     self.environment.handle_exception()
   File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\jinja2\environment.py", line 936, in handle_exception
     raise rewrite_traceback_stack(source=source)
-  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\templates\user.html", line 1, in top-level template code
-    {% extends "base.html" %} {% block content %}
+  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\templates\index.html", line 1, in top-level template code
+    {% extends 'base.html' %} {% block content %}
   File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\templates\base.html", line 31, in top-level template code
     {% block content %} {% endblock content %}
-  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\templates\user.html", line 15, in block 'content'
-    {{ form.hidden_tag() }}
-  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\jinja2\environment.py", line 485, in getattr
-    return getattr(obj, attribute)
-jinja2.exceptions.UndefinedError: 'form' is undefined
-2023-09-03 15:44:20,902 ERROR: Exception on /user/user2 [GET] [in C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\app.py:1414]
+  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\templates\index.html", line 12, in block 'content'
+    <p>{{ form.sumit() }}</p>
+  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\jinja2\utils.py", line 83, in from_obj
+    if hasattr(obj, "jinja_pass_arg"):
+jinja2.exceptions.UndefinedError: 'app.forms.PostForm object' has no attribute 'sumit'
+2023-09-03 15:54:16,393 ERROR: Exception on /index [GET] [in C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\app.py:1414]
 Traceback (most recent call last):
   File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\app.py", line 2190, in wsgi_app
     response = self.full_dispatch_request()
@@ -57,8 +41,8 @@ Traceback (most recent call last):
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
   File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask_login\utils.py", line 290, in decorated_view
     return current_app.ensure_sync(func)(*args, **kwargs)
-  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\routes.py", line 83, in user
-    form = EmptyForm()
+  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\routes.py", line 40, in index
+    return render_template('index.html', title='Home', posts=posts, form=form)
   File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\templating.py", line 151, in render_template
     return _render(app, template, context)
   File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\templating.py", line 132, in _render
@@ -67,14 +51,43 @@ Traceback (most recent call last):
     self.environment.handle_exception()
   File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\jinja2\environment.py", line 936, in handle_exception
     raise rewrite_traceback_stack(source=source)
-  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\templates\user.html", line 1, in top-level template code
-    {% extends "base.html" %} {% block content %}
+  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\templates\index.html", line 1, in top-level template code
+    {% extends 'base.html' %} {% block content %}
   File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\templates\base.html", line 31, in top-level template code
     {% block content %} {% endblock content %}
-  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\templates\user.html", line 15, in block 'content'
-    {{ form.hidden_tag() }}
-  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\jinja2\environment.py", line 485, in getattr
-    return getattr(obj, attribute)
-jinja2.exceptions.UndefinedError: 'form' is undefined
-2023-09-03 15:44:24,114 INFO: Microblog startup [in C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\__init__.py:46]
-2023-09-03 15:53:57,272 INFO: Microblog startup [in C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\__init__.py:46]
+  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\templates\index.html", line 12, in block 'content'
+    <p>{{ form.submit() }}</p>
+  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\jinja2\utils.py", line 83, in from_obj
+    if hasattr(obj, "jinja_pass_arg"):
+jinja2.exceptions.UndefinedError: 'app.forms.PostForm object' has no attribute 'sumit'
+2023-09-03 15:54:17,603 ERROR: Exception on /index [GET] [in C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\app.py:1414]
+Traceback (most recent call last):
+  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\routes.py", line 40, in index
+    return render_template('index.html', title='Home', posts=posts, form=form)
+  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\jinja2\environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\jinja2\environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\templates\index.html", line 1, in top-level template code
+    {% extends 'base.html' %} {% block content %}
+  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\templates\base.html", line 31, in top-level template code
+    {% block content %} {% endblock content %}
+  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\templates\index.html", line 12, in block 'content'
+    <p>{{ form.submit() }}</p>
+  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\jinja2\utils.py", line 83, in from_obj
+    if hasattr(obj, "jinja_pass_arg"):
+jinja2.exceptions.UndefinedError: 'app.forms.PostForm object' has no attribute 'sumit'

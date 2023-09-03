@@ -1,11 +1,15 @@
-<table>
-  <tr valign="top">
-    <td><img src="{{ post.author.avatar(36) }}" /></td>
-    <td>
-      <a href="{{ url_for('user', username=post.author.username) }}">
-        {{ post.author.username }}
-      </a>
-      says:<br />{{ post.body }}
-    </td>
-  </tr>
-</table>
+
+<div class="row border rounded shadow-sm my-2 p-2">
+
+  <div class="col-1 d-flex align-items-center">
+    <img src="{{ post.author.avatar(64) }}" class="align-self-start mr-3" alt="{{ post.author.username }} Avatar">
+  </div>
+
+  <div class="col">
+    <div class="d-flex flex-row justify-content-between">
+      <a class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="{{ url_for('user', username=post.author.username) }}">{{ post.author.username }}</a>
+      <p>{{ post.timestamp }}</p>
+    </div>
+    <p>{{ post.body }}</p>   
+  </div>
+</div>

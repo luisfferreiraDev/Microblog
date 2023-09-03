@@ -1,4 +1,4 @@
-2023-09-03 15:54:24,851 ERROR: Exception on /index [GET] [in C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\app.py:1414]
+2023-09-03 16:13:54,911 ERROR: Exception on /explore [GET] [in C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\app.py:1414]
 Traceback (most recent call last):
   File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\app.py", line 2190, in wsgi_app
     response = self.full_dispatch_request()
@@ -10,77 +10,8 @@ Traceback (most recent call last):
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
   File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask_login\utils.py", line 290, in decorated_view
     return current_app.ensure_sync(func)(*args, **kwargs)
-  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\routes.py", line 40, in index
-    return render_template('index.html', title='Home', posts=posts, form=form)
-  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\templating.py", line 151, in render_template
-    return _render(app, template, context)
-  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\templating.py", line 132, in _render
-    rv = template.render(context)
-  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\jinja2\environment.py", line 1301, in render
-    self.environment.handle_exception()
-  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\jinja2\environment.py", line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\templates\index.html", line 1, in top-level template code
-    {% extends 'base.html' %} {% block content %}
-  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\templates\base.html", line 31, in top-level template code
-    {% block content %} {% endblock content %}
-  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\templates\index.html", line 12, in block 'content'
-    <p>{{ form.submit() }}</p>
-  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\jinja2\utils.py", line 83, in from_obj
-    if hasattr(obj, "jinja_pass_arg"):
-jinja2.exceptions.UndefinedError: 'app.forms.PostForm object' has no attribute 'sumit'
-2023-09-03 15:54:28,062 ERROR: Exception on /index [GET] [in C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\app.py:1414]
-Traceback (most recent call last):
-  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\app.py", line 2190, in wsgi_app
-    response = self.full_dispatch_request()
-  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\app.py", line 1486, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\app.py", line 1484, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\app.py", line 1469, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask_login\utils.py", line 290, in decorated_view
-    return current_app.ensure_sync(func)(*args, **kwargs)
-  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\routes.py", line 40, in index
-    return render_template('index.html', title='Home', posts=posts, form=form)
-  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\templating.py", line 151, in render_template
-    return _render(app, template, context)
-  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\templating.py", line 132, in _render
-    rv = template.render(context)
-  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\jinja2\environment.py", line 1301, in render
-    self.environment.handle_exception()
-  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\jinja2\environment.py", line 936, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\templates\index.html", line 1, in top-level template code
-    {% extends 'base.html' %} {% block content %}
-  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\templates\base.html", line 31, in top-level template code
-    {% block content %} {% endblock content %}
-  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\templates\index.html", line 12, in block 'content'
-    <p>{{ form.submit() }}</p>
-  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\jinja2\utils.py", line 83, in from_obj
-    if hasattr(obj, "jinja_pass_arg"):
-jinja2.exceptions.UndefinedError: 'app.forms.PostForm object' has no attribute 'sumit'
-2023-09-03 15:55:09,236 INFO: Microblog startup [in C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\__init__.py:46]
-2023-09-03 15:59:05,639 INFO: Microblog startup [in C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\__init__.py:46]
-2023-09-03 16:01:03,277 INFO: Microblog startup [in C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\__init__.py:46]
-2023-09-03 16:04:06,998 INFO: Microblog startup [in C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\__init__.py:46]
-2023-09-03 16:05:27,726 INFO: Microblog startup [in C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\__init__.py:46]
-2023-09-03 16:08:13,486 INFO: Microblog startup [in C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\__init__.py:46]
-2023-09-03 16:12:43,520 INFO: Microblog startup [in C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\__init__.py:46]
-2023-09-03 16:12:44,945 ERROR: Exception on /index [GET] [in C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\app.py:1414]
-Traceback (most recent call last):
-  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\app.py", line 2190, in wsgi_app
-    response = self.full_dispatch_request()
-  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\app.py", line 1486, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\app.py", line 1484, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\app.py", line 1469, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
-  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask_login\utils.py", line 290, in decorated_view
-    return current_app.ensure_sync(func)(*args, **kwargs)
-  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\routes.py", line 31, in index
-    return render_template("index.html", title='Home Page', form=form, posts=posts)
+  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\routes.py", line 147, in explore
+    return render_template('index.html', title='Explore', posts=posts)
   File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\templating.py", line 151, in render_template
     return _render(app, template, context)
   File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\templating.py", line 132, in _render
@@ -93,11 +24,90 @@ Traceback (most recent call last):
     {% extends "base.html" %} {% block content %}
   File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\templates\base.html", line 32, in top-level template code
     {% block content %} {% endblock content %}
-  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\templates\index.html", line 14, in block 'content'
-    {% for post in posts %} {% include "_post.html" %} {% endfor %} {% endblock %}
-  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\templates\_post.html", line 3, in top-level template code
-    <td><img src="{{ user.avatar(36) }}" /></td>
+  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\templates\index.html", line 4, in block 'content'
+    {{ form.hidden_tag() }}
   File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\jinja2\environment.py", line 485, in getattr
     return getattr(obj, attribute)
-jinja2.exceptions.UndefinedError: 'user' is undefined
-2023-09-03 16:13:21,469 INFO: Microblog startup [in C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\__init__.py:46]
+jinja2.exceptions.UndefinedError: 'form' is undefined
+2023-09-03 16:14:54,688 INFO: Microblog startup [in C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\__init__.py:46]
+2023-09-03 16:15:31,853 INFO: Microblog startup [in C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\__init__.py:46]
+2023-09-03 16:17:14,859 INFO: Microblog startup [in C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\__init__.py:46]
+2023-09-03 16:18:14,270 INFO: Microblog startup [in C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\__init__.py:46]
+2023-09-03 16:24:17,730 INFO: Microblog startup [in C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\__init__.py:46]
+2023-09-03 16:24:20,528 ERROR: Exception on /index [GET] [in C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\app.py:1414]
+Traceback (most recent call last):
+  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\routes.py", line 30, in index
+    posts = current_user.followed_posts().paginate(
+TypeError: Query.paginate() takes 1 positional argument but 4 were given
+2023-09-03 16:24:21,725 ERROR: Exception on /index [GET] [in C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\app.py:1414]
+Traceback (most recent call last):
+  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\routes.py", line 30, in index
+    posts = current_user.followed_posts().paginate(
+TypeError: Query.paginate() takes 1 positional argument but 4 were given
+2023-09-03 16:24:23,127 ERROR: Exception on /index [GET] [in C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\app.py:1414]
+Traceback (most recent call last):
+  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\routes.py", line 30, in index
+    posts = current_user.followed_posts().paginate(
+TypeError: Query.paginate() takes 1 positional argument but 4 were given
+2023-09-03 16:24:24,211 ERROR: Exception on /index [GET] [in C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\app.py:1414]
+Traceback (most recent call last):
+  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\routes.py", line 30, in index
+    posts = current_user.followed_posts().paginate(
+TypeError: Query.paginate() takes 1 positional argument but 4 were given
+2023-09-03 16:25:20,727 INFO: Microblog startup [in C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\__init__.py:46]
+2023-09-03 16:25:23,923 ERROR: Exception on /index [GET] [in C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\app.py:1414]
+Traceback (most recent call last):
+  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask\app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\venv\lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\routes.py", line 30, in index
+    posts = current_user.followed_posts().paginate(page, app.config['POSTS_PER_PAGE'], False)
+TypeError: Query.paginate() takes 1 positional argument but 4 were given
+2023-09-03 16:26:58,590 INFO: Microblog startup [in C:\Mambos\Professional\LaunchIt\flask-tut\microblog\app\__init__.py:46]

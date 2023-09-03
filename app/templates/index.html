@@ -2,31 +2,37 @@
 
 {% block content %}
 
+<div class="container mt-4">
   <h1>Hi, {{ current_user.username }}!</h1>
 
   {% if form %}
   <form action="" method="post">
-    {{ form.hidden_tag() }}
-    <p>
-      {{ form.post.label }}<br />
-      {{ form.post(cols=32, rows=4) }}<br />
-      {% for error in form.post.errors %}
-      <span style="color: red">[{{ error }}]</span>
-      {% endfor %}
-    </p>
-    <p>{{ form.submit() }}</p>
+      {{ form.hidden_tag() }}
+      <div class="form-group">
+          <label for="{{ form.post.id }}">{{ form.post.label }}</label>
+          {{ form.post(class="form-control", rows=4) }}
+          {% for error in form.post.errors %}
+          <div class="text-danger">{{ error }}</div>
+          {% endfor %}
+      </div>
+      <button type="submit" class="btn btn-primary mt-2"><i class="fa-regular fa-comment me-2"></i>Submit</button>
   </form>
-  {% endif %} 
-
-  {% for post in posts %} 
-    {% include "_post.html" %} 
-  {% endfor %} 
-
-  {% if prev_url %}
-  <a href="{{ prev_url }}">Newer posts</a>
   {% endif %}
-  {% if next_url %}
-  <a href="{{ next_url }}">Older posts</a>
-  {% endif %}
+
+  <div class="mt-4">
+      {% for post in posts %}
+      {% include "_post.html" %}
+      {% endfor %}
+  </div>
+
+  <div class="mt-4">
+      {% if prev_url %}
+      <a href="{{ prev_url }}" class="btn btn-secondary">Newer posts</a>
+      {% endif %}
+      {% if next_url %}
+      <a href="{{ next_url }}" class="btn btn-secondary float-end">Older posts</a>
+      {% endif %}
+  </div>
+</div>
   
 {% endblock %}

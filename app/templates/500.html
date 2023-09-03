@@ -1,5 +1,8 @@
 {% extends "base.html" %} {% block content %}
-<h1>An unexpected error has occurred</h1>
-<p>The administrator has been notified. Sorry for the inconvenience!</p>
-<p><a href="{{ url_for('index') }}">Back</a></p>
+<div class="d-flex flex-column justify-content-center align-items-center my-4">
+    <h1>An unexpected error has occurred</h1>
+    <p>The administrator has been notified. Sorry for the inconvenience!</p>
+    <a class="btn btn-outline-primary" href="{{ url_for('index') }}"><i class="fa-solid fa-arrow-left me-2"></i>Back</a>
+</div>
+
 {% endblock %}
