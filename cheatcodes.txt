@@ -6,3 +6,6 @@ Set the env var:
 
 deactivate the virtual env:
     deactivate
+
+Debug mode:
+    $env:FLASK_DEBUG = "1"
