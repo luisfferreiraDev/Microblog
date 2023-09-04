@@ -56,17 +56,36 @@
       {% endif %}
       </div>
       <div>
-        <hr/>
-        {% for post in posts %} 
-          {% include "_post.html" %} 
-        {% endfor %}
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <a class="nav-link active" id="tab1-tab" data-bs-toggle="tab" href="#tab1" role="tab" aria-controls="tab1" aria-selected="true">My Posts</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" id="tab2-tab" data-bs-toggle="tab" href="#tab2" role="tab" aria-controls="tab2" aria-selected="false">Saved Posts</a>
+            </li>
+        </ul>
+        
+        <div class="tab-content my-4" id="myTabContent">
+            <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="tab1-tab">
+              {% for post in posts %} 
+                {% include "_post.html" %} 
+              {% endfor %}
+              {% if prev_url %}
+              <a href="{{ prev_url }}">{{_('Newer posts')}}</a>
+              {% endif %}
+              {% if next_url %}
+              <a href="{{ next_url }}">{{_('Older posts')}}</a>
+              {% endif %}
+            </div>
+            <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
+              {% for post in saved_posts %} 
+                {% include "_post.html" %} 
+              {% endfor %}
+            </div>
+        </div>
 
-        {% if prev_url %}
-        <a href="{{ prev_url }}">{{_('Newer posts')}}</a>
-        {% endif %}
-        {% if next_url %}
-        <a href="{{ next_url }}">{{_('Older posts')}}</a>
-        {% endif %}
+
+
       </div>
     </div>
   </div>

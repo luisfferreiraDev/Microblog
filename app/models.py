@@ -13,6 +13,12 @@ followers = db.Table(
     db.Column('followed_id', db.Integer, db.ForeignKey('user.id')),
 )
 
+class SavedPost(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    post_id = db.Column(db.Integer, db.ForeignKey('post.id'))
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
+
 
 class Upvote(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -42,6 +48,7 @@ class User(UserMixin, db.Model):
     )
     upvotes = db.relationship('Upvote', backref='user', lazy='dynamic')
     downvotes = db.relationship('Downvote', backref='user', lazy='dynamic')
+    saved_posts = db.relationship('SavedPost', backref='user', lazy='dynamic')
 
 
     def __repr__(self):
@@ -118,6 +125,21 @@ class User(UserMixin, db.Model):
         if downvote:
             db.session.delete(downvote)
             db.session.commit()
+
+    def save_post(self, post):
+        if not self.has_saved_post(post):
+            saved_post = SavedPost(user_id=self.id, post_id=post.id)
+            db.session.add(saved_post)
+            db.session.commit()
+
+    def unsave_post(self, post):
+        saved_post = SavedPost.query.filter_by(user_id=self.id, post_id=post.id).first()
+        if saved_post:
+            db.session.delete(saved_post)
+            db.session.commit()
+
+    def has_saved_post(self, post):
+        return self.saved_posts.filter_by(post_id=post.id).count() > 0
     
 
 @login.user_loader
@@ -132,6 +154,7 @@ class Post(db.Model):
     language = db.Column(db.String(5))
     upvotes = db.relationship('Upvote', backref='post', lazy='dynamic')
     downvotes = db.relationship('Downvote', backref='post', lazy='dynamic')
+    saved_by = db.relationship('SavedPost', backref='post', lazy='dynamic')
 
     def __repr__(self):
         return '<Post {}>'.format(self.body)

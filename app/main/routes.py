@@ -70,8 +70,12 @@ def user(username):
     next_url = url_for('main.user', page=posts.next_num) if posts.has_next else None
     prev_url = url_for('main.user', page=posts.prev_num) if posts.has_prev else None
 
+    saved_posts = current_user.saved_posts.all()
+    post_ids = [saved_post.post_id for saved_post in saved_posts]
+    saved_posts_list = Post.query.filter(Post.id.in_(post_ids)).all()
+
     form = EmptyForm()
-    return render_template('user.html', user=user, posts = posts.items, form=form, next_url=next_url, prev_url=prev_url )
+    return render_template('user.html', user=user, posts = posts.items, form=form, next_url=next_url, prev_url=prev_url, saved_posts=saved_posts_list )
 
 
 @bp.route('/edit_profile', methods=['GET', 'POST'])
@@ -165,31 +169,16 @@ def downvote_post(post_id):
     return jsonify(response_data)
 
     
-'''
-@bp.route('/upvote_post/<int:post_id>', methods=['POST'])
+@bp.route('/save_post/<int:post_id>', methods=['POST'])
 @login_required
-def upvote_post(post_id):
+def save_toggle(post_id):
     post = Post.query.get_or_404(post_id)
-
-    if current_user.has_downvoted(post):
-        current_user.remove_downvote(post)
-
-    current_user.upvote(post)
-    session['last_visited_page'] = request.referrer
     
-    return redirect(session['last_visited_page'] or url_for('main.index'))
-
-@bp.route('/downvote_post/<int:post_id>', methods=['POST'])
-@login_required
-def downvote_post(post_id):
-    post = Post.query.get_or_404(post_id)
-
-
-    if current_user.has_upvoted(post):
-        current_user.remove_upvote(post)
-
-    current_user.downvote(post)
-    session['last_visited_page'] = request.referrer
+    if current_user.has_saved_post(post):
+        current_user.unsave_post(post)
+        saved = False
+    else:
+        current_user.save_post(post)
+        saved = True
     
-    return redirect(session['last_visited_page'] or url_for('main.index'))
-'''
+    return jsonify({"saved": saved})

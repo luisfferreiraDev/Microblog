@@ -17,6 +17,13 @@
     <button onclick="downvotePost({{ post.id }})" class="btn btn-outline-danger btn-sm downvote-button" data-post-id="{{ post.id }}">
       <i class="fa-solid fa-thumbs-down me-2"></i><span id="downvote-count-{{ post.id }}">{{ post.downvotes.count() }}</span>
     </button>
+    <button onclick="savePost({{ post.id }})" id="save-toggle-button-{{ post.id }}" data-post-id="{{ post.id }}" class="btn btn-outline-warning">
+      {% if current_user.has_saved_post(post) %}
+      <i id="star-icon-{{ post.id }}" class="fa-solid fa-star"></i>
+      {% else %}
+      <i id="star-icon-{{ post.id }}" class="fa-regular fa-star"></i>
+      {% endif %}
+    </button>
 
     {# 
 

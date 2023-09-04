@@ -101,6 +101,22 @@
             console.error("Error while downvoting:", error);
         });
         }
+
+        function savePost(postId) {
+          console.log('clicked')
+          $.post('/save_post/' + postId, {
+            post_id: postId
+          }).done(function(response) {
+            if (response['saved']) {
+              console.log(response['saved']);
+              $("#star-icon-" + postId).removeClass('fa-regular').addClass('fa-solid');
+          } else {
+              $("#star-icon-" + postId).removeClass('fa-solid').addClass('fa-regular');
+          }
+          }).fail(function() {
+            console.error("Error while downvoting:", error);
+        });
+        }
     </script>
   </body>
 </html>
