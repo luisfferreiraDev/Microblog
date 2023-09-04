@@ -6,7 +6,7 @@
   <div class="my-4 d-flex justify-content-center">
     <div class="card shadow" style="width: 24rem;">
       <div class="card-body">
-        <h5 class="card-title">{{_(Sign In)}}</h5>
+        <h5 class="card-title">{{_('Sign In')}}</h5>
         <h6 class="card-subtitle mb-2 text-body-secondary">{{_('Have an account?')}}</h6>
         <form action="" method="post" novalidate>
           {{ render_form(form) }}
@@ -14,11 +14,11 @@
       </div>
       <div class="card-footer text-body-secondary text-center">
         <p>{{_('New user?')}}</p>
-        <a class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="{{ url_for('register') }}">{{_('Click to Register!')}}</a>
+        <a class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="{{ url_for('auth.register') }}">{{_('Click to Register!')}}</a>
       </div>
       <div class="card-footer text-body-secondary text-center">
         <p>{{_('Forgot Your Password?')}}</p>
-        <a class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="{{ url_for('reset_password_request') }}">{{_('Click to Reset It')}}</a>
+        <a class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="{{ url_for('auth.reset_password_request') }}">{{_('Click to Reset It')}}</a>
       </div>
     </div>
   </div>

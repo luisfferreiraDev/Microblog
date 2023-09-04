@@ -11,12 +11,25 @@
       <p>{{ moment(post.timestamp).fromNow() }}</p>
     </div>
     <p>{{ post.body }}</p>   
+    <form action="/upvote_post/{{post.id}}" method="POST" class="d-inline">
+      <button type="submit" class="btn btn-outline-success btn-sm">
+        <i class="fa-solid fa-thumbs-up me-2"></i>{{ post.upvotes.count() }}
+      </button>
+    </form>
+    <form action="/downvote_post/{{post.id}}" method="POST" class="d-inline">
+      <button type="submit" class="btn btn-outline-danger btn-sm">
+        <i class="fa-solid fa-thumbs-down me-2"></i>{{ post.downvotes.count() }}
+      </button>
+    </form>
+
+    {# 
 
     {% if post.language and post.language != g.locale %}
     <div class="d-flex flex-row-reverse">
       <a href="#">{{ _('Translate') }}</a>
     </div>
     {% endif %}
-
+    
+    #}
   </div>
 </div>

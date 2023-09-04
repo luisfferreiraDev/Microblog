@@ -14,6 +14,18 @@ followers = db.Table(
 )
 
 
+class Upvote(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    post_id = db.Column(db.Integer, db.ForeignKey('post.id'))
+
+
+class Downvote(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    post_id = db.Column(db.Integer, db.ForeignKey('post.id'))
+
+
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key = True)
     username = db.Column(db.String(64), index = True, unique = True)
@@ -28,6 +40,9 @@ class User(UserMixin, db.Model):
         secondaryjoin=(followers.c.followed_id == id),
         backref=db.backref('followers', lazy='dynamic'), lazy='dynamic'
     )
+    upvotes = db.relationship('Upvote', backref='user', lazy='dynamic')
+    downvotes = db.relationship('Downvote', backref='user', lazy='dynamic')
+
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
@@ -74,6 +89,36 @@ class User(UserMixin, db.Model):
             return
         return User.query.get(id)
     
+    def upvote(self, post):
+        if not self.has_upvoted(post):
+            upvote = Upvote(user_id=self.id, post_id=post.id)
+            db.session.add(upvote)
+            db.session.commit()
+
+    def downvote(self, post):
+        if not self.has_downvoted(post):
+            downvote = Downvote(user_id=self.id, post_id=post.id)
+            db.session.add(downvote)
+            db.session.commit()
+
+    def has_upvoted(self, post):
+        return self.upvotes.filter_by(post_id=post.id).count() > 0
+
+    def has_downvoted(self, post):
+        return self.downvotes.filter_by(post_id=post.id).count() > 0
+    
+    def remove_upvote(self, post):
+        upvote = Upvote.query.filter_by(user_id=self.id, post_id=post.id).first()
+        if upvote:
+            db.session.delete(upvote)
+            db.session.commit()
+    
+    def remove_downvote(self, post):
+        downvote = Downvote.query.filter_by(user_id=self.id, post_id=post.id).first()
+        if downvote:
+            db.session.delete(downvote)
+            db.session.commit()
+    
 
 @login.user_loader
 def load_user(id):
@@ -85,6 +130,10 @@ class Post(db.Model):
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     language = db.Column(db.String(5))
+    upvotes = db.relationship('Upvote', backref='post', lazy='dynamic')
+    downvotes = db.relationship('Downvote', backref='post', lazy='dynamic')
 
     def __repr__(self):
         return '<Post {}>'.format(self.body)
+    
+

@@ -14,6 +14,7 @@
         {% else %}
         <title>{{ _('Welcome to Microblog!') }}</title>
         {% endif %}
+        <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='ico/comments-regular.svg') }}">
         {% endblock %}
     </head>
     <body>
