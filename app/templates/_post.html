@@ -11,16 +11,12 @@
       <p>{{ moment(post.timestamp).fromNow() }}</p>
     </div>
     <p>{{ post.body }}</p>   
-    <form action="/upvote_post/{{post.id}}" method="POST" class="d-inline">
-      <button type="submit" class="btn btn-outline-success btn-sm">
-        <i class="fa-solid fa-thumbs-up me-2"></i>{{ post.upvotes.count() }}
-      </button>
-    </form>
-    <form action="/downvote_post/{{post.id}}" method="POST" class="d-inline">
-      <button type="submit" class="btn btn-outline-danger btn-sm">
-        <i class="fa-solid fa-thumbs-down me-2"></i>{{ post.downvotes.count() }}
-      </button>
-    </form>
+    <button onclick="upvotePost({{ post.id }})" class="btn btn-outline-success btn-sm upvote-button" data-post-id="{{ post.id }}">
+      <i class="fa-solid fa-thumbs-up me-2"></i><span id="upvote-count-{{ post.id }}">{{ post.upvotes.count() }}</span>
+    </button>
+    <button onclick="downvotePost({{ post.id }})" class="btn btn-outline-danger btn-sm downvote-button" data-post-id="{{ post.id }}">
+      <i class="fa-solid fa-thumbs-down me-2"></i><span id="downvote-count-{{ post.id }}">{{ post.downvotes.count() }}</span>
+    </button>
 
     {# 
 

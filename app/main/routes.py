@@ -1,5 +1,5 @@
 from datetime import datetime
-from flask import render_template, flash, redirect, url_for, request, g, current_app, session
+from flask import render_template, flash, redirect, url_for, request, g, current_app, session, jsonify
 from flask_login import current_user, login_required
 from flask_babel import _, get_locale
 from langdetect import detect, LangDetectException
@@ -134,6 +134,42 @@ def unfollow(username):
 @login_required
 def upvote_post(post_id):
     post = Post.query.get_or_404(post_id)
+    if current_user.has_downvoted(post):
+        current_user.remove_downvote(post)
+    current_user.upvote(post)
+    db.session.commit()
+    upvotes_count = post.upvotes.count()
+    downvotes_count = post.downvotes.count()
+    response_data = {
+        'downvotes': downvotes_count,
+        'upvotes': upvotes_count
+    }
+    return jsonify(response_data)
+
+
+@bp.route('/downvote_post/<int:post_id>', methods=['POST'])
+@login_required
+def downvote_post(post_id):
+    post = Post.query.get_or_404(post_id)
+    if current_user.has_upvoted(post):
+        current_user.remove_upvote(post)
+    current_user.downvote(post)
+    db.session.commit()
+    downvotes_count = post.downvotes.count()
+    upvotes_count = post.upvotes.count()
+    response_data = {
+        'downvotes': downvotes_count,
+        'upvotes': upvotes_count
+    }
+
+    return jsonify(response_data)
+
+    
+'''
+@bp.route('/upvote_post/<int:post_id>', methods=['POST'])
+@login_required
+def upvote_post(post_id):
+    post = Post.query.get_or_404(post_id)
 
     if current_user.has_downvoted(post):
         current_user.remove_downvote(post)
@@ -156,3 +192,4 @@ def downvote_post(post_id):
     session['last_visited_page'] = request.referrer
     
     return redirect(session['last_visited_page'] or url_for('main.index'))
+'''
