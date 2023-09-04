@@ -19,23 +19,23 @@
     <body>
       <nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm">
         <div class="container-fluid">
-          <a class="navbar-brand" href="{{ url_for('index') }}"><i class="fa-regular fa-comments me-2"></i>Microblog</a>
+          <a class="navbar-brand" href="{{ url_for('main.index') }}"><i class="fa-regular fa-comments me-2"></i>Microblog</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{{ url_for('index') }}">{{_('Home')}}</a>
+                <a class="nav-link active" aria-current="page" href="{{ url_for('main.index') }}">{{_('Home')}}</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('explore') }}">{{_('Explore')}}</a>
+                <a class="nav-link" href="{{ url_for('main.explore') }}">{{_('Explore')}}</a>
               </li>
             </ul>
             <ul class="navbar-nav ms-auto">
               {% if current_user.is_anonymous %}
               <li class="nav-item">
-                  <a class="btn btn-primary" href="{{ url_for('login') }}">{{_('Login')}}</a>
+                  <a class="btn btn-primary" href="{{ url_for('auth.login') }}">{{_('Login')}}</a>
               </li>
               {% else %}
               <li class="nav-item dropdown">
@@ -43,9 +43,9 @@
                   <img class="me-4" src="{{ current_user.avatar(36) }}" />{{ current_user.username }}
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
-                  <li><a class="dropdown-item" href="{{ url_for('user', username=current_user.username) }}">{{_('Profile')}}</a></li>
+                  <li><a class="dropdown-item" href="{{ url_for('main.user', username=current_user.username) }}">{{_('Profile')}}</a></li>
                   <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item text-decoration-underline" href="{{ url_for('logout') }}">{{_('Logout')}}<i class="fa-solid fa-right-to-bracket ms-2"></i></a></li>
+                  <li><a class="dropdown-item text-decoration-underline" href="{{ url_for('auth.logout') }}">{{_('Logout')}}<i class="fa-solid fa-right-to-bracket ms-2"></i></a></li>
                 </ul>
               </li>
               {% endif %}

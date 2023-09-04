@@ -16,7 +16,7 @@
       {% if not current_user.is_following(user) and user != current_user %}
       <div>
         <p>
-          <form action="{{ url_for('follow', username=user.username) }}" method="post">
+          <form action="{{ url_for('main.follow', username=user.username) }}" method="post">
               {{ form.hidden_tag() }}
               <div class="d-flex justify-content-center">
                 {{ form.submit(value='_(Follow)', class='btn btn-primary') }}
@@ -27,7 +27,7 @@
       {% elif current_user.is_following(user) and user != current_user %}
       <div>
         <p>
-          <form action="{{ url_for('unfollow', username=user.username) }}" method="post">
+          <form action="{{ url_for('main.unfollow', username=user.username) }}" method="post">
               {{ form.hidden_tag() }}
               <div class="d-flex justify-content-center">
                 {{ form.submit(value='_(Unfollow)', class='btn btn-outline-danger') }}
@@ -45,7 +45,7 @@
         {% endif %}
         {% if user == current_user %}
         <div class="ms-auto">
-          <p><a class="btn btn-outline-primary" href="{{ url_for('edit_profile') }}"><i class="fa-solid fa-pen me-2"></i>{{_('Edit your profile')}}</a></p>
+          <p><a class="btn btn-outline-primary" href="{{ url_for('main.edit_profile') }}"><i class="fa-solid fa-pen me-2"></i>{{_('Edit your profile')}}</a></p>
         </div>
         {% endif %}
 
